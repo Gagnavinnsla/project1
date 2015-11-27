@@ -27,6 +27,8 @@ proportion_men_survived = np.sum(men_onboard) / np.size(men_onboard)
 print('Proportion of women who survived is {}'.format(proportion_women_survived))
 print('Proportion of men who survived is {}'.format(proportion_men_survived))
 
+print("Hvað í foooookkanum er þetta ómar????")
+
 fare_ceiling = 40
 data[data[0::,9].astype(np.float) >= fare_ceiling, 9] = fare_ceiling - 1.0
 fare_bracket_size = 10
