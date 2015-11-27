@@ -16,3 +16,9 @@ print ("Hér var ég")
 
 print ("Hér var ég")
 print("Hvaða fucking bail er þetta Fannar?")
+
+
+
+a=365
+b=24
+c=a/b
