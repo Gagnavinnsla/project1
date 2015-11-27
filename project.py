@@ -1,4 +1,4 @@
-x = int(input("Sladu inn tolu: "))
+x = int(input("blessadur: "))
 
 if x < 0:
 x = 0
