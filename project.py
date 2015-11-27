@@ -1,8 +1,8 @@
-x = int(input("Sladu inn tolu: "))
+x = int(input("bjur: "))
 
 if x < 0:
 x = 0
-    print('Villa! Bannad ad sla inn neikvaeda tolu')
+    print('asdfasdfasdfasdfasdfasdfas')
     x = 0
     print('Negative changed to zero')
 elif x == 0:
