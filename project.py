@@ -1,24 +1,21 @@
-x = int(input("bjur: "))
-
-if x < 0:
-x = 0
-    print('asdfasdfasdfasdfasdfasdfas')
-    x = 0
-    print('Negative changed to zero')
-elif x == 0:
-    print('Null')
-elif x == 1:
-    print('Solo')
-else:
-    print('More')
-
-print ("Hér var ég")
-
-print ("Hér var ég")
-print("Hvaða fucking bail er þetta Fannar?")
+import pandas as pd
+import numpy as np
+import csv as csv
 
 
+def openfile(Nameoffile):
+	Vektor=[]
+	Boolian=True
+	with open(Nameoffile) as csvfile:
+		File = csv.reader(csvfile, delimiter=';')
 
-a=365
-b=24
-c=a/b
+		for row in File:
+				if Boolian:
+					Header=row
+					Boolian=False
+				else:
+						Vektor.append((row))
+	return Header,Vektor
+
+Header1,Vektor1=openfile('SAM04101.csv')
+print(Header1)
