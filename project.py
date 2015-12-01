@@ -18,7 +18,7 @@ def openfile(Nameoffile):
 		Ar=Header.index('Ár')
 	return Header,Vektor,Ar
 
-Header1,Vektor1,Ar1=openfile('SAM04101.csv')
+Header1,Vektor1,Ar1=openfile('mannfjoldi.csv')#'SAM04101.csv'
 Header2,Vektor2,Ar2=openfile('mannfjoldi.csv')
 
 class Found(Exception): pass
@@ -53,16 +53,39 @@ def Veljaflokk(Header,Vektor,Index,counter):
 	list1=[]
 	for i in range(counter):
 		list1.append(Vektor[Index+i][indexinput])
-	list1=[int(i) for i in list1]
+	list1=[int(i) for i in list1]#Eiða út gildum sem eru ekki tölur!! fyrir sama lista
 	return list1
 
 list1=Veljaflokk(Header1,Vektor1,Index1,counter)
 list2=Veljaflokk(Header2,Vektor2,Index2,counter)
 if list1!=list2:
-	Difference=list1-list2
-	for i in range(counter-1)
-		ChangeinDifference=Difference[i+1]/Difference[i]
+	Difference=[]
+	ChangeinDifference=[]
+	ratio=[]
+	Changeinratio=[]
+	for i in range(counter):
+		Difference.append(list1[i]-list2[i])
+		ratio.append(list1[i]/list2[i])
+	for i in range(counter-1):
+		ChangeinDifference.append((Difference[i+1]/Difference[i]-1)*100)
+		Changeinratio.append((ratio[i+1]/ratio[i]-1)*100)
 	correlation=np.corrcoef(list1,list2)[0][1]
+	for i in range(counter-1):
+		print("%.2f %%" %(Changeinratio[i]))
+else:
+	print("Sami listi")
+	variance=np.var(list1)
+	std=np.std(listi1)
+	listmax=np.max(listi1)
+	listmin=np.min(listi1)
+	listsum=np.sum(listi1)
+	listmean=np.mean(listi1)
+	lnchange=[]
+	change=[]
+	for i in range(counter-1):
+		change.append((list1[i+1]/list1[i]-1)*100)
+		lnchange.append((np.log(ratio[i+1]/ratio[i])-1)*100)
+
 """
 print(Vektor1[Index1][Ar1])
 print(Vektor2[Index2][Ar2])
