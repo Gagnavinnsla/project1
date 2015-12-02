@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import csv as csv
 
-
 def openfile(Nameoffile):
 	Vektor=[]
 	Boolian=True
@@ -52,19 +51,20 @@ def Veljaflokk(Header,Vektor,Index,counter):
 			print("\nReyndu aftur\n")
 			continue
 	list1=[]
-	for i in range(counter):
+	listdeleted=[]
+	i=0
+	while i<counter:
 		if Vektor[Index+i][indexinput].isdigit():
 			list1.append(Vektor[Index+i][indexinput])
 		else:
-			list1.append(np.nan)
+			listdeleted.append(Vektor[Index+i])
+			del Vektor[Index+i]
+			counter-=1
+		i+=1
+	return list1,counter,listdeleted
 
-	list1.dropna() #droppa nan
-	
-	print(list1)
-	return list1
-
-list1=Veljaflokk(Header1,Vektor1,Index1,counter)
-list2=Veljaflokk(Header2,Vektor2,Index2,counter)
+list1,counter,listdeleted=Veljaflokk(Header1,Vektor1,Index1,counter)
+list2,counter,listdeleted=Veljaflokk(Header2,Vektor2,Index2,counter)
 if list1!=list2:
 	Difference=[]
 	ChangeinDifference=[]
@@ -96,7 +96,7 @@ else:
 """
 print(Vektor1[Index1][Ar1])
 print(Vektor2[Index2][Ar2])
-print('--------------------------')
+print('---------------------------')
 for i in range(counter):
 	print(Vektor1[Index1+i][Ar1])
 """
