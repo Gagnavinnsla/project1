@@ -11,7 +11,7 @@ def openfile(Nameoffile):
 				else:
 						Vektor.append((row))
 		Ar=Header.index('Ár')
-	return Header,Vektor,A
+	return Header,Vektor,Ar
 
 
 def Veljaflokk(Header,Vektor,Index,counter):
