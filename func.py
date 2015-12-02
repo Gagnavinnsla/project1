@@ -1,3 +1,6 @@
+import csv as csv
+import numpy as np
+
 def openfile(Nameoffile):
 	Vektor=[]
 	Boolian=True
