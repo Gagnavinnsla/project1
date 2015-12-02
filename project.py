@@ -17,9 +17,10 @@ def openfile(Nameoffile):
 						Vektor.append((row))
 		Ar=Header.index('Ár')
 	return Header,Vektor,Ar
-
-Header1,Vektor1,Ar1=openfile('mannfjoldi.csv')#'SAM04101.csv'
-Header2,Vektor2,Ar2=openfile('mannfjoldi.csv')
+Nameoffile1='mannfjoldi.csv'
+Nameoffile2='mannfjoldi.csv'
+Header1,Vektor1,Ar1=openfile(Nameoffile1)#'SAM04101.csv'
+Header2,Vektor2,Ar2=openfile(Nameoffile2)
 
 class Found(Exception): pass
 Boolian=True
@@ -52,8 +53,11 @@ def Veljaflokk(Header,Vektor,Index,counter):
 			continue
 	list1=[]
 	for i in range(counter):
-		list1.append(Vektor[Index+i][indexinput])
-	list1=[int(i) for i in list1]#Eiða út gildum sem eru ekki tölur!! fyrir sama lista
+		if Vektor[Index+i][indexinput].isdigit():
+			list1.append(Vektor[Index+i][indexinput])
+		else:
+			list1.append(np.nan)
+	print(list1)
 	return list1
 
 list1=Veljaflokk(Header1,Vektor1,Index1,counter)
