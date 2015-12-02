@@ -57,6 +57,9 @@ def Veljaflokk(Header,Vektor,Index,counter):
 			list1.append(Vektor[Index+i][indexinput])
 		else:
 			list1.append(np.nan)
+
+	list1.dropna() #droppa nan
+	
 	print(list1)
 	return list1
 
