@@ -17,7 +17,7 @@ def openfile(Nameoffile):
 	return Header,Vektor,Ar
 
 
-def Veljaflokk(Header,Vektor,Index,counter):
+def Veljaflokk(Header):
 	Boolian=True
 	while Boolian==True:
 		try:
@@ -27,15 +27,19 @@ def Veljaflokk(Header,Vektor,Index,counter):
 		except ValueError:
 			print("\nReyndu aftur\n")
 			continue
+	return indexinput
+
+def Createlist(Vektor,Index,counter,indexinput):
 	list1=[]
 	listdeleted=[]
 	i=0
 	while i<counter:
-		if Vektor[Index+i][indexinput].isdigit():
+		try: 
+			Vektor[Index+i][indexinput]=float(Vektor[Index+i][indexinput])##Breyta í int?
 			list1.append(Vektor[Index+i][indexinput])
-		else:
+			i+=1
+		except ValueError:
 			listdeleted.append(Vektor[Index+i])
 			del Vektor[Index+i]
 			counter-=1
-		i+=1
 	return list1,counter,listdeleted
