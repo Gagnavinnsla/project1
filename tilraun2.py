@@ -8,23 +8,26 @@ def Lesaskra(nafn):
 	settings['encoding'] = 'utf-8'
 	settings['sep'] = ';'
 	settings['dayfirst'] = True
-	settings['index_col'] = 0
-
 	skjal = pd.read_csv(nafn, **settings)
+	skjal.set_index('Ár',inplace=True)
 	skjal = skjal.apply(pd.to_numeric, errors='coerce') 
 	#gæti þurft að update-a pandas til að pd.to_numeric virkar
 
+	print(skjal)
 	colfjol = len(skjal.columns)
-	s1 = [i.strip().replace(' ','_') for i in skjal[0:colfjol]]
-
-	skjal = skjal.dropna()
+	
+	skjal=pd.DataFrame(skjal)
+	skjal = skjal.dropna(axis=0,how='all')
+	print("HEYYA",skjal) 	
 	return skjal
 
 skjal1=Lesaskra('mannfjoldi.csv')
-skjal2=Lesaskra('SAM04101.csv')	
+print(" -        - -- - - -- - - - -")
+skjal2=Lesaskra('Afbrot.csv')	
+print(" -      asdfasdf adfaasdf  - -asdfasfas asdfa- - - -- - - - -")
 
 skjal = pd.concat([skjal1,skjal2],axis=1, join_axes=[skjal1.index]).dropna()
-
+print(skjal)
 d = {}
 d['Staðalfrávik'] = np.std(skjal, axis=0)
 d['Meðaltal'] = np.mean(skjal, axis=0)
@@ -48,6 +51,7 @@ stdev = np.std(skjal[x])
 meðaltal = np.mean(skjal[x])
 miðgildi = np.median(skjal[x])
 """
+s1 = [i.strip().replace(' ','_') for i in skjal[0:colfjol]]
 
 #-------------------------Operation Tilgáta-----------------------------#
 
