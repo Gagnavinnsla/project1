@@ -14,19 +14,17 @@ skjal = skjal.apply(pd.to_numeric, errors='coerce')
 colfjol = print(len(skjal.columns))
 s1 = [i.strip().replace(' ','_') for i in skjal[0:colfjol]]
 
+[print(i,end=", ") for i in skjal[0:colfjol]]
+x = input("\nVeldu flokk: ")
+skjal = skjal.dropna()
 
-#[print(i,end=", ") for i in skjal[0:colfjol]]
-#x = input("\nVeldu flokk: ")
-#print(skjal[x])
-
-df = {}
-df['Staðalfrávik'] = skjal.apply(np.std, axis=0, reduce=False).dropna()
-
-
-print(df)
+stdev = np.std(skjal[x])
+meðaltal = np.mean(skjal[x])
+miðgildi = np.median(skjal[x])
 
 #-------------------------Operation Tilgáta-----------------------------#
 
 
-#tilgáta = input("Veldu ")
+
+
 
