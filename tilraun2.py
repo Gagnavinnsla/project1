@@ -6,15 +6,27 @@ import csv as csv
 settings = {}
 settings['encoding'] = 'utf-8'
 settings['sep'] = ';'
-#settings['parse_dates'] = ['Date']
 settings['dayfirst'] = True
 settings['index_col'] = 0
 
-#skjal = read_csv('mannfjoldi.csv', delimiter=';', index_col=0)
-#skjal = skjal.columns.strip().replace(' ','_')
-#print(skjal[10:])
 skjal = pd.read_csv('mannfjoldi.csv', **settings)
-#df = skjal.ix[10:, ['Árleg fjölgun', 'Fjölgun', 'Aðfluttir umfram brottflutta',"Fæddir umfram dána"]]
+skjal = skjal.apply(pd.to_numeric, errors='coerce')
 colfjol = print(len(skjal.columns))
 s1 = [i.strip().replace(' ','_') for i in skjal[0:colfjol]]
-print(skjal[:10])
+
+
+#[print(i,end=", ") for i in skjal[0:colfjol]]
+#x = input("\nVeldu flokk: ")
+#print(skjal[x])
+
+df = {}
+df['Staðalfrávik'] = skjal.apply(np.std, axis=0, reduce=False).dropna()
+
+
+print(df)
+
+#-------------------------Operation Tilgáta-----------------------------#
+
+
+#tilgáta = input("Veldu ")
+
