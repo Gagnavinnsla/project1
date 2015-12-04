@@ -16,11 +16,9 @@ def Lesaskra(nafn):
 	return skjal
 
 skjal1=Lesaskra('mannfjoldi.csv')
-print(" -        - -- - - -- - - - -")
 skjal2=Lesaskra('Afbrot.csv')	
-print(" -      asdfasdf adfaasdf  - -asdfasfas asdfa- - - -- - - - -")
 skjal = pd.concat([skjal1,skjal2],axis=1, join_axes=[skjal1.index]).dropna()
-print(skjal)
+
 d = {}
 d['Staðalfrávik'] = np.std(skjal, axis=0)
 d['Meðaltal'] = np.mean(skjal, axis=0)
