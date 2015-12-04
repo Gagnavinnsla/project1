@@ -12,20 +12,13 @@ def Lesaskra(nafn):
 	skjal.set_index('Ár',inplace=True)
 	skjal = skjal.apply(pd.to_numeric, errors='coerce') 
 	#gæti þurft að update-a pandas til að pd.to_numeric virkar
-
-	print(skjal)
-	colfjol = len(skjal.columns)
-	
-	skjal=pd.DataFrame(skjal)
-	skjal = skjal.dropna(axis=0,how='all')
-	print("HEYYA",skjal) 	
+	skjal=skjal.dropna(axis=1,how='all')
 	return skjal
 
 skjal1=Lesaskra('mannfjoldi.csv')
 print(" -        - -- - - -- - - - -")
 skjal2=Lesaskra('Afbrot.csv')	
 print(" -      asdfasdf adfaasdf  - -asdfasfas asdfa- - - -- - - - -")
-
 skjal = pd.concat([skjal1,skjal2],axis=1, join_axes=[skjal1.index]).dropna()
 print(skjal)
 d = {}
